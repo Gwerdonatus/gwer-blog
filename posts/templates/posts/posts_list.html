@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  posts
+{% endblock  %}
+
+{% block content %}
+<h1>post📰</h1>
+<section>
+  {% for post in posts %}
+    <article>
+      <img class= banner src="{{post.banner.url}}" alt="{{post.title}}">
+      <h2><a href="{% url 'posts:post_detail_view' slug=post.slug %}">
+       {{post.title}}
+      </a>
+      </h2>
+      <p>{{post.date}}</p>
+      <p>{{post.body|truncatewords:30 }}</p>
+
+    </article>
+  
+  {% endfor %}
+</section>
+<br>
+<a href="/">back</a>
+{% endblock  %}
